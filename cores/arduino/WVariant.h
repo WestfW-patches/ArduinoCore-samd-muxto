@@ -20,6 +20,7 @@
 #pragma once
 
 #include <stdint.h>
+#include "../../variants/parts_sam.h"
 #include "sam.h"
 #include "variant.h"
 #include "../../config.h"

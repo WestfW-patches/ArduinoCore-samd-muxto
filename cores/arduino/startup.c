@@ -554,7 +554,7 @@ void SystemInit( void )
     /* Switch Generic Clock Generator 0 to 96MHz PLL output. The output is divided by two to obtain a 48MHz CPU clock. */
     GCLK->GENDIV.reg = ( GCLK_GENDIV_ID( GENERIC_CLOCK_GENERATOR_MAIN ) | GCLK_GENDIV_DIV(2) );
     waitForSync();
-    GCLK->GENCTRL.reg = ( GCLK_GENCTRL_ID( GENERIC_CLOCK_GENERATOR_MAIN ) | GCLK_GENCTRL_SRC_DPLL96M | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
+    GCLK->GENCTRL.reg = ( GCLK_GENCTRL_ID( GENERIC_CLOCK_GENERATOR_MAIN ) | GCLK_GENCTRL_SRC_FDPLL | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
     waitForSync();
   #elif (defined(CLOCKCONFIG_INTERNAL) || defined(CLOCKCONFIG_INTERNAL_USB))
     /* Switch Generic Clock Generator 0 to 48MHz DFLL48M output. The output is undivided. */
@@ -568,7 +568,7 @@ void SystemInit( void )
   /* Setup GCLK0 (GENERIC_CLOCK_GENERATOR_MAIN) which is used for the CPU. */
   #if (defined(CLOCKCONFIG_32768HZ_CRYSTAL) || defined(CLOCKCONFIG_HS_CRYSTAL))
     /* Switch Generic Clock Generator 0 to 96MHz PLL output. The output is divided by two to obtain a 48MHz CPU clock. */
-    GCLK->GENCTRL[GENERIC_CLOCK_GENERATOR_MAIN].reg = ( GCLK_GENCTRL_DIV(2) | GCLK_GENCTRL_SRC_DPLL96M | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
+    GCLK->GENCTRL[GENERIC_CLOCK_GENERATOR_MAIN].reg = ( GCLK_GENCTRL_DIV(2) | GCLK_GENCTRL_SRC_FDPLL | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
     waitForSync();
   #elif (defined(CLOCKCONFIG_INTERNAL) || defined(CLOCKCONFIG_INTERNAL_USB))
     /* Note that the C21 is already setup above */
@@ -757,7 +757,7 @@ void SystemInit( void )
     /* Switch GENERIC_CLOCK_GENERATOR_48MHz to 96MHz PLL output. The output is divided by two to obtain 48MHz. */
     GCLK->GENDIV.reg = ( GCLK_GENDIV_ID( GENERIC_CLOCK_GENERATOR_48MHz ) | GCLK_GENDIV_DIV(2) );
     waitForSync();
-    GCLK->GENCTRL.reg = ( GCLK_GENCTRL_ID( GENERIC_CLOCK_GENERATOR_48MHz ) | GCLK_GENCTRL_SRC_DPLL96M | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
+    GCLK->GENCTRL.reg = ( GCLK_GENCTRL_ID( GENERIC_CLOCK_GENERATOR_48MHz ) | GCLK_GENCTRL_SRC_FDPLL | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
     waitForSync();
   #elif (defined(CLOCKCONFIG_INTERNAL) || defined(CLOCKCONFIG_INTERNAL_USB))
     /* Switch GENERIC_CLOCK_GENERATOR_48MHz to 48MHz DFLL48M output. The output is undivided. */
@@ -770,7 +770,7 @@ void SystemInit( void )
 #elif (SAML21 || SAMC21)
   #if (defined(CLOCKCONFIG_32768HZ_CRYSTAL) || defined(CLOCKCONFIG_HS_CRYSTAL))
     /* Switch GENERIC_CLOCK_GENERATOR_48MHz to 96MHz PLL output. The output is divided by two to obtain 48MHz. */
-    GCLK->GENCTRL[GENERIC_CLOCK_GENERATOR_48MHz].reg = ( GCLK_GENCTRL_DIV(2) | GCLK_GENCTRL_SRC_DPLL96M | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
+    GCLK->GENCTRL[GENERIC_CLOCK_GENERATOR_48MHz].reg = ( GCLK_GENCTRL_DIV(2) | GCLK_GENCTRL_SRC_FDPLL | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN );
     waitForSync();
   #elif (defined(CLOCKCONFIG_INTERNAL) || defined(CLOCKCONFIG_INTERNAL_USB))
     /* Switch GENERIC_CLOCK_GENERATOR_48MHz to 48MHz DFLL48M output. The output is undivided. */
